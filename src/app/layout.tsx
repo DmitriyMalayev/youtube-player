@@ -1,11 +1,11 @@
 import { type Metadata } from "next";
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
+  // SignInButton,
+  // SignUpButton,
+  // SignedIn,
+  // SignedOut,
+  // UserButton,
 } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -24,20 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider afterSignOutUrl={"/"} >
       <html lang="en">
-        <body className={`${interFont.className} antialiased`}>
-          <header className="flex justify-end items-center p-4 gap-4 h-16 border">
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-          {children}
-        </body>
+        <body className={`${interFont.className} antialiased`}>{children}</body>
       </html>
     </ClerkProvider>
   );
