@@ -1,7 +1,12 @@
+"use client";
+
+import { trpc } from "@/trpc/client";
+
 export default function Home() {
+  const { data } = trpc.hello.useQuery({ text: "Hello, World!" });
   return (
     <div className="flex items-center justify-center">
-      <h1>Loading Videos...</h1>
+      Client component says {data?.greeting}
     </div>
   );
 }

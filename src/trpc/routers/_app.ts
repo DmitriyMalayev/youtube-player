@@ -13,10 +13,11 @@ export const appRouter = createTRPCRouter({
     )
     // Define the 'query' handler for the 'hello' endpoint.
     .query((opts) => {
-      // Return a greeting string using the validated input.
-      return `Hello, ${opts.input.text}!`;
+      return {
+        greeting: `${opts.input.text}!`,
+      };
     }),
 });
 
 // Export the type definition of the 'appRouter'.
-export type AppRouter = typeof appRouter;
+export type AppRouter = typeof appRouter; 

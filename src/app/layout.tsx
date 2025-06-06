@@ -9,6 +9,7 @@ import {
 } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { TRPCProvider } from "@/trpc/client";
 
 const interFont = Inter({
   subsets: ["latin"],
@@ -24,9 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider afterSignOutUrl={"/"} >
+    <ClerkProvider afterSignOutUrl={"/"}>
       <html lang="en">
-        <body className={`${interFont.className} antialiased`}>{children}</body>
+        <body className={`${interFont.className} antialiased`}>
+          <TRPCProvider>{children}</TRPCProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
